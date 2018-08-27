@@ -1,0 +1,200 @@
+@charset "UTF-8";
+/*输入框placehodel颜色*/
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #cccccc; opacity:1;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #cccccc;opacity:1;
+}
+
+input:-ms-input-placeholder{
+    color: #cccccc;opacity:1;
+}
+::-ms-clear,::-ms-reveal{
+    display:none;
+}
+input::-webkit-input-safebox-button {
+    display: none;
+}
+input::-webkit-input-placeholder{
+    color: #cccccc;opacity:1;
+}
+
+html, body {
+    height: 100%;
+    overflow-y: hidden;
+}
+
+.top {
+    position: relative;
+    height: 11%;
+    max-height: 120px;
+    width: 100%;
+    background: #ffffff;
+}
+.logoBox{
+    position: absolute;
+    height: 64px;
+    top:50%;
+    margin-top: -32px;
+    margin-left: 75px;
+}
+.logoBox div{
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 15px;
+}
+.logoBox h3{
+    color: #666666;
+    font-size: 22px;
+    font-weight: normal;
+}
+.logoBox p{
+    color: #999999;
+    font-size: 12px;
+}
+
+.bottom {
+    height: 7.5%;
+    max-height: 80px;
+    width: 100%;
+    background: #ffffff;
+    text-align: center;
+    line-height: 4;
+    font-size: 12px;
+    color: #999999;
+}
+
+.container {
+    position: relative;
+    height: 81.5%;
+    width: 100%;
+    background: url("../images/login/a.jpg") top center no-repeat;
+    background-size: cover;
+}
+
+.loginBox {
+    position: absolute;
+    color: #ffffff;
+    width: 400px;
+    height: 394px;
+    left: 50%;
+    top: 50%;
+    margin-left: -200px;
+    margin-top: -192px;
+    /*background: chartreuse;*/
+}
+
+.loginBox h6 {
+    font-size: 38px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+
+.loginBox ul li {
+    margin-bottom: 20px;
+}
+.container .loginBox ul li .border{
+    border:1px solid rgb(255, 153, 0);
+}
+.container .loginBox ul li .user.focus{
+    background-image: url("../images/login/userb.png");
+}
+.container .loginBox ul li .password.focus{
+    background-image: url("../images/login/pwdb.png");
+}
+.loginBox ul li .user {
+    background-image: url("../images/login/user.png");
+    background-position:25px;
+    background-repeat: no-repeat;
+    border:1px solid transparent;
+}
+
+.loginBox ul li .password {
+    background-image: url("../images/login/pwd.png");
+    background-position:25px;
+    background-repeat: no-repeat;
+    border:1px solid transparent;
+}
+.user input, .password input{
+    width: 315px;
+    margin-left: 50px;
+    font-size: 16px;
+    padding: 15px 0;
+    background: none;
+    border:none;
+    outline: none;
+    color: #999999;
+}
+.code input{
+    width: 200px;
+    background: none;
+    font-size: 16px;
+    border:none;
+    outline: none;
+    color: #999999;
+    padding: 15px 25px;
+}
+.verification{
+    width: 144px;
+    height: 50px;
+    margin: 0 12px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border:none;
+    outline: none;
+    font-size: 24px;
+    letter-spacing: 5px;
+    font-family: Serif;
+    font-style: italic;
+    cursor: pointer;
+    background: url("../images/login/codebg.png");
+}
+.refresh{
+    display: inline-block;
+    width: 25px;
+    height: 50px;
+    vertical-align: bottom;
+    font-size: 12px;
+    cursor: pointer;
+}
+.loginBox ul li div.code{
+    width: 198px;
+    height: 48px;
+    border: 1px solid transparent;
+}
+.loginBox ul li div {
+    background-color: #e5e5e5;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+.loginBtn{
+    height: 60px;
+    width: 100%;
+    font-size: 24px;
+    color: #ffffff;
+    background: #ff9008;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.del, .eye{
+    width: 20px;
+    height: 20px;
+    margin-top: 15px;
+    margin-right: 10px;
+    background: url("../images/login/del.png") top center no-repeat;
+    background-size: 100% 100%;
+}
+.eye{
+    background: url("../images/login/eyeb.png") top center no-repeat;
+}
+.eyek{
+    background: url("../images/login/eye.png") top center no-repeat;
+}

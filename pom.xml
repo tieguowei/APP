@@ -1,17 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.resale</groupId>
-  <artifactId>SJK</artifactId>
+  <artifactId>APP</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <modules>
-  	<module>SJK-admin</module>
-  	<module>SJK-util</module>
-  	<module>SJK-api</module>
-  	<module>SJK-houseofhello</module>
+  	<module>APP-admin</module>
+  	<module>APP-util</module>
+  	<module>APP-api</module>
   </modules>
   
-   <!-- spring boot parent节点，引入这个之后，在下面和spring boot相关的就不需要引入版本了; -->
+	<!-- spring boot parent节点，引入这个之后，在下面和spring boot相关的就不需要引入版本了; -->
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -21,16 +20,25 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-     <!-- 指定一下jdk的版本 ，这里我们使用jdk 1.7 ,默认是1.6 -->
-    <java.version>1.7</java.version>
+    <java.version>1.8</java.version>
   </properties>
 
 
   <dependencies>
-		    <dependency>
-		      <groupId>junit</groupId>
-		      <artifactId>junit</artifactId>
-		    </dependency>
+	   <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- web支持: 1、web mvc; 2、restful; 3、jackjson支持; 4、aop ........ -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
 		
 		<!-- mysql 数据库驱动. -->
 		<dependency>
@@ -38,12 +46,6 @@
 				<artifactId>mysql-connector-java</artifactId>
 		</dependency>	
 		
-		<!-- 	
-			spring-boot mybatis依赖：
-			
-			请不要使用1.0.0版本，因为还不支持拦截器插件，
-	    	1.1.1 是博主写帖子时候的版本，大家使用最新版本即可
-	     -->
 		<dependency>
 		    <groupId>org.mybatis.spring.boot</groupId>
 		    <artifactId>mybatis-spring-boot-starter</artifactId>
@@ -51,12 +53,6 @@
 		</dependency>
 		
 			
-		<!-- 
-    	MyBatis提供了拦截器接口，我们可以实现自己的拦截器，
-    	将其作为一个plugin装入到SqlSessionFactory中。 
-		Github上有位开发者写了一个分页插件，我觉得使用起来还可以，挺方便的。 
-		Github项目地址： https://github.com/pagehelper/Mybatis-PageHelper
-     -->	
 	    <dependency>
 		    <groupId>com.github.pagehelper</groupId>
 		    <artifactId>pagehelper</artifactId>
@@ -123,12 +119,6 @@
 			<artifactId>jstl</artifactId>
 		</dependency>
 		
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jsp-api</artifactId>
-			<version>2.0</version>
-			<scope>provided</scope>
-		</dependency>
 		
 		<!-- 上传下载 -->
 		<dependency>
@@ -158,5 +148,16 @@
 			<artifactId>shiro-spring</artifactId>
 			<version>1.4.0</version>
 		</dependency>
+		
+		<!-- tomcat 的支持.-->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-tomcat</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.tomcat.embed</groupId>
+				<artifactId>tomcat-embed-jasper</artifactId>
+			</dependency>
   </dependencies>
+
 </project>

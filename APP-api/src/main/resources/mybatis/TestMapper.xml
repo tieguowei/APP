@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.resale.foreground.mapper.TestMapper" >
+  <resultMap id="BaseResultMap" type="com.resale.foreground.pojo.Menu" >
+    <id column="menu_id" property="menuId" jdbcType="INTEGER" />
+    <result column="menu_name" property="menuName" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="parentID" property="parentid" jdbcType="INTEGER" />
+    <result column="icon" property="icon" jdbcType="VARCHAR" />
+    <result column="statu" property="statu" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    menu_id, menu_name, url, parentID, icon, statu
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.resale.foreground.pojo.MenuExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_menu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_menu
+    where menu_id = #{menuId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_menu
+    where menu_id = #{menuId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.resale.foreground.pojo.MenuExample" >
+    delete from tb_menu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.resale.foreground.pojo.Menu" >
+    insert into tb_menu (menu_id, menu_name, url, 
+      parentID, icon, statu
+      )
+    values (#{menuId,jdbcType=INTEGER}, #{menuName,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{parentid,jdbcType=INTEGER}, #{icon,jdbcType=VARCHAR}, #{statu,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.resale.foreground.pojo.Menu" >
+    insert into tb_menu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="menuId != null" >
+        menu_id,
+      </if>
+      <if test="menuName != null" >
+        menu_name,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="parentid != null" >
+        parentID,
+      </if>
+      <if test="icon != null" >
+        icon,
+      </if>
+      <if test="statu != null" >
+        statu,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="menuId != null" >
+        #{menuId,jdbcType=INTEGER},
+      </if>
+      <if test="menuName != null" >
+        #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null" >
+        #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="icon != null" >
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="statu != null" >
+        #{statu,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.resale.foreground.pojo.MenuExample" resultType="java.lang.Integer" >
+    select count(*) from tb_menu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_menu
+    <set >
+      <if test="record.menuId != null" >
+        menu_id = #{record.menuId,jdbcType=INTEGER},
+      </if>
+      <if test="record.menuName != null" >
+        menu_name = #{record.menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.url != null" >
+        url = #{record.url,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parentid != null" >
+        parentID = #{record.parentid,jdbcType=INTEGER},
+      </if>
+      <if test="record.icon != null" >
+        icon = #{record.icon,jdbcType=VARCHAR},
+      </if>
+      <if test="record.statu != null" >
+        statu = #{record.statu,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_menu
+    set menu_id = #{record.menuId,jdbcType=INTEGER},
+      menu_name = #{record.menuName,jdbcType=VARCHAR},
+      url = #{record.url,jdbcType=VARCHAR},
+      parentID = #{record.parentid,jdbcType=INTEGER},
+      icon = #{record.icon,jdbcType=VARCHAR},
+      statu = #{record.statu,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.resale.foreground.pojo.Menu" >
+    update tb_menu
+    <set >
+      <if test="menuName != null" >
+        menu_name = #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null" >
+        parentID = #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="icon != null" >
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="statu != null" >
+        statu = #{statu,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where menu_id = #{menuId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.resale.foreground.pojo.Menu" >
+    update tb_menu
+    set menu_name = #{menuName,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      parentID = #{parentid,jdbcType=INTEGER},
+      icon = #{icon,jdbcType=VARCHAR},
+      statu = #{statu,jdbcType=VARCHAR}
+    where menu_id = #{menuId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getParenMenuByUserId" parameterType="int"  resultMap="BaseResultMap">
+  	SELECT
+		m.menu_id,
+		m.menu_name,
+		m.parentID,
+		m.icon,
+		m.url
+	FROM
+		tb_menu m,
+		tb_role_menu rm,
+		tb_role r,
+		tb_user_role ur,
+		tb_user u
+	WHERE
+		m.menu_id = rm.menu_id
+	AND rm.role_id = r.role_id
+	AND r.role_id = ur.role_id
+	AND ur.user_id = u.user_id
+	AND m.statu = 0
+	AND m.parentID = 0
+	AND u.user_id = #{id}
+	ORDER BY
+		m.menu_id
+  </select>
+  
+  <select id="getChildMenuByPid" parameterType="hashmap"  resultMap="BaseResultMap">
+  		SELECT
+			b.menu_id,
+			b.menu_name,
+			b.parentID,
+			b.icon,
+			b.url,
+			b.statu
+	FROM
+		(
+			SELECT
+				m.menu_id,
+				m.menu_name,
+				m.parentID,
+				m.icon,
+				m.url,
+				m.statu
+		FROM
+			tb_menu m,
+			tb_role_menu rm,
+			tb_role r,
+			tb_user_role ur,
+			tb_user u
+		WHERE
+			m.menu_id = rm.menu_id
+		AND rm.role_id = r.role_id
+		AND r.role_id = ur.role_id
+		AND ur.user_id = u.user_id
+		AND m.statu = 0
+		AND m.parentID != 0
+		AND u.user_id = #{uid}
+   )b 
+	WHERE b.statu=0 
+	and b.parentID=#{pid}
+	ORDER BY b.menu_id
+  </select>
+  <!-- 根据菜单名验证菜单名是否唯一 -->
+  <select id="getMenuByName" parameterType="String" resultMap="BaseResultMap">
+  	SELECT
+		*
+	FROM
+		tb_menu
+	WHERE
+		menu_name = #{name}
+  </select>
+  
+  <!-- 根据id查找-->
+  <select id="quertMenuById" parameterType="int" resultMap="BaseResultMap">
+  	SELECT
+		*
+	FROM
+		tb_menu
+	WHERE
+		menu_id = #{mid}
+  </select>
+  
+  	<!-- 根据id删除-->
+	 <delete id="delMenuById" parameterType="int">
+	 DELETE
+		FROM
+			tb_menu
+	WHERE
+		menu_id = #{mid}
+	 </delete>
+	 
+	 <!-- 更新菜单 -->
+	 <update id="upMenu" parameterType="com.resale.foreground.pojo.Menu">
+	 	UPDATE tb_menu
+		SET menu_name = #{menu_name},
+		url=#{url},
+		parentID=#{parentId},
+		icon=#{icon},
+		statu=#{statu} 
+		where menu_id=#{menu_id}
+	 </update>
+	 
+	 <!-- 添加菜单 -->
+	 <insert id="saveMenu" parameterType="com.resale.foreground.pojo.Menu">
+	 INSERT INTO tb_menu (
+		menu_name,
+		url,
+		parentID,
+		icon,
+		statu
+	)
+	VALUES
+		(
+		#{menu_name},#{url},#{parentId},#{icon},#{statu}
+	)
+	 </insert>
+	 
+	 <!-- 分页查询所有 -->
+	 <select id="getMenuList" parameterType="hashmap" resultMap="BaseResultMap">
+	 	SELECT
+			*
+		FROM
+			tb_menu
+		ORDER BY
+			menu_id
+		LIMIT #{startIndex},#{pageSize}
+	 </select>
+	 
+	 <!-- 统计数量 -->
+	 <select id="getCount" resultType="int">
+	 	select count(*) from tb_menu
+	 </select>
+	 
+	 <!-- 查询所有父级菜单 -->
+	 <select id="getParentMenu" resultMap="BaseResultMap">
+	 	SELECT
+			*
+		FROM
+			tb_menu
+		WHERE
+			parentID = 0
+	 </select>
+</mapper> 

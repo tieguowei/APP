@@ -1,0 +1,8 @@
+.modal {
+    position: fixed;
+    top: -12%;
+    left: 30%;
+    width: 800px;
+    height: 800px;
+    margin: 100px 100 0 0px;/* margin 负值为宽高的一半 */
+}

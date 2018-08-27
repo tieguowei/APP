@@ -1,8 +1,0 @@
-#authDlg {
-    position: fixed;
-    top: 4%;
-    left: 30%;
-    width: 800px;
-    height: 500px;
-    margin: 100px 100 0 0px;/* margin 负值为宽高的一半 */
-}
